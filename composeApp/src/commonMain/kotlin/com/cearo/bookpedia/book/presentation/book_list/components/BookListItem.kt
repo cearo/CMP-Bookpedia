@@ -48,11 +48,51 @@ import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import kotlin.math.round
 
+/**
+ * Represents errors that can occur during API interactions.
+ * This sealed interface defines specific exception types for more granular error handling:
+ * - `InvalidImageSizeException`: Thrown when an image retrieved from the API has invalid dimensions (e.g., width or height is less than or equal to 1).
+ * - `ImageFailedToLoad`: Thrown when there's a general failure in loading an image from the API, not covered by `InvalidImageSizeException`.
+ */
 sealed interface APIError {
+    /**
+     * Thrown when an image retrieved from the API has invalid dimensions (e.g., width or height is less than or equal to 1).
+     */
     data class InvalidImageSizeException(override val message: String): Exception(message)
-    data class ImageFailedToLoad(override val message: String): Exception(message)
+
+    /**
+     * Thrown when there's a general failure in loading an image from the API, not covered by `InvalidImageSizeException`.
+     */
+    data class ImageFailedToLoadException(override val message: String): Exception(message)
 }
 
+/**
+ * Displays a single book item within a list.
+ *
+ * This Composable renders the visual representation of a [Book], including its cover image,
+ * title, author, and average rating. It's designed to be interactive, allowing users
+ * to tap on it to view more details.
+ *
+ * The composable handles potential errors during book cover image loading by displaying
+ * a placeholder image. Consumers of this composable should be aware that image loading
+ * is an asynchronous operation and might fail.
+ *
+ * @param book The [Book] object containing the data to be displayed.
+ * @param onClick A lambda function invoked when the book item is clicked.
+ *                It typically receives the `book.id` (or the [Book] object itself)
+ *                to navigate to a dedicated book details screen (e.g., `BookDetailsScreen`).
+ * @param modifier An optional [Modifier] to be applied to the root Composable of this item.
+ *                 Defaults to [Modifier].
+ *
+ * @throws APIError.InvalidImageSizeException
+ * @see APIError.InvalidImageSizeException
+ *
+ * @throws APIError.ImageFailedToLoadException
+ * @see APIError.ImageFailedToLoadException
+ *
+ * @see LazyColumn (This item is often used within a [LazyColumn] for displaying a list of books)
+ * @see Book // The data class representing
+**/
 @Composable
 fun BookListItem(
     book: Book,
@@ -94,7 +134,7 @@ fun BookListItem(
                     },
                     onError = {
                         it.result.throwable.printStackTrace()
-                        imageLoadResult = Result.failure(APIError.ImageFailedToLoad(imageFailedToLoadMessage))
+                        imageLoadResult = Result.failure(APIError.ImageFailedToLoadException(imageFailedToLoadMessage))
                     }
                 )
 

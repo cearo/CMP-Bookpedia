@@ -36,6 +36,20 @@ import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
 
+/**
+ * A composable function that displays a search bar for books.
+ *
+ * This search bar utilizes an [OutlinedTextField] with a rounded shape.
+ * It features a leading [Icons.Default.Search] icon to indicate its search functionality.
+ * A trailing [Icons.Default.Close] icon appears via [AnimatedVisibility] when the `searchQuery`
+ * is not blank, allowing the user to clear the search input.
+ * Custom text selection colors are provided using [CompositionLocalProvider] and [LocalTextSelectionColors].
+ *
+ * @param searchQuery The current search query.
+ * @param onSearchQueryChange A callback function that is invoked when the search query changes.
+ * @param onImeSearch A callback function that is invoked when the user presses the search button on the keyboard.
+ * @param modifier A [Modifier] for this composable.
+ */
 @Composable
 fun BookSearchBar(
     searchQuery: String,

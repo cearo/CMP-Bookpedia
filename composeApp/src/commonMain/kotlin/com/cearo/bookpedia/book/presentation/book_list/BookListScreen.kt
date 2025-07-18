@@ -20,7 +20,14 @@ import com.cearo.bookpedia.core.presentation.DarkBlue
 import org.koin.compose.viewmodel.koinViewModel
 
 /**
- * @param onBookClick will propagate the [Book] selected up to the Nav controller.
+ * Root composable for the Book List Screen.
+ *
+ * This function serves as the entry point for the Book List feature,
+ * managing the [BookListViewModel] and handling navigation events.
+ *
+ * @param viewModel The [BookListViewModel] instance, typically injected by Koin.
+ * @param onBookClick Callback function that is invoked when a [Book] is clicked.
+ *                    This is used to propagate the selected [Book] up to the navigation controller.
  */
 @Composable
 fun BookListScreenRoot(
@@ -41,14 +48,17 @@ fun BookListScreenRoot(
 }
 
 /**
- * @param state:[BookListState] contains state values like:
- * * [BookListState.searchQuery]
- * * [BookListState.favoriteBooks]
- * * [BookListState.isLoading]
+ * Displays the list of books and handles user interactions.
  *
- * @param onAction:[BookListAction] contains action data classes.
- * *[BookListAction.OnBookClick] will pass the [Book] selected up to the Root screen for
- *  the Nav controller to use.
+ * This composable is responsible for rendering the UI elements of the book list screen,
+ * including the search bar and the list of books. It observes the [BookListState]
+ * and triggers actions based on user input. Will hide the keyboard in [BookSearchBar] `onImeSearch` callback.
+ *
+ * @param state The current state of the book list, containing data such as the search query,
+ *              list of favorite books, and loading status.
+ * @param onAction A callback function that is invoked when a user action occurs, such as
+ *                 clicking a book or changing the search query. This function passes the
+ *                 [BookListAction] up to the `BookListScreenRoot` for processing.
  */
 @Composable
 private fun BookListScreen (

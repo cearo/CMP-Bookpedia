@@ -5,6 +5,11 @@ import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.stringResource
 
 
+/**
+ * A sealed interface representing UI text that can be either a dynamic string or a string resource.
+ * This allows for flexible handling of text in the UI, enabling both hardcoded strings and
+ * localized strings from resources.
+ */
 sealed interface UiText {
     data class DynamicString(val value: String): UiText
     class StringResourceId(

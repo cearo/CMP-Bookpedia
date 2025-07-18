@@ -14,6 +14,30 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.cearo.bookpedia.book.domain.Book
 
+/**
+ * A composable function that displays a list of books using a `LazyColumn`.
+ *
+ * This function takes a list of `Book` objects and renders them vertically.
+ * It utilizes `LazyColumn` for efficient rendering of potentially long lists,
+ * only composing and laying out the items that are currently visible on screen.
+ *
+ * Each book item is represented by the `BookListItem` composable.
+ *
+ * A key is provided for each item based on the `book.id` to help Compose efficiently
+ * identify and update items when the list changes.
+ *
+ * @param books The list of `Book` objects to display. This is a required parameter.
+ * @param onBookClick A lambda function that will be invoked when a specific `BookListItem`
+ *                    is clicked. It receives the clicked `Book` object as a parameter.
+ *                    This is a required parameter.
+ * @param scrollState The `LazyListState` used to control and observe the scrolling
+ *                    position of the `LazyColumn`. Defaults to a new state remembered
+ *                    by `rememberLazyListState()`. This allows for programmatic scrolling
+ *                    or saving/restoring scroll position.
+ * @param modifier The `Modifier` to be applied to the `LazyColumn` container.
+ *                 Defaults to `Modifier`, allowing for customization of layout,
+ *                 padding, background, etc., from the call site.
+ */
 @Composable
 fun BookList(
     books: List<Book>,
