@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<resources>
+    <!-- Hints -->
+    <string name="hint_search">Search...</string>
+    <string name="hint_close">Clear Search</string>
+    <!-- Exceptions -->
+    <string name="exception_invalid_image_size">Invalid Image Size</string>
+    <string name="exception_image_failed_to_load">Image Failed To Load</string>
+    <!-- Accessibility -->
+    <string name="accessibility_ratings_star">Book Average Rating Star</string>
+    <string name="accessibility_search_icon">Search Icon</string>
+    <string name="accessibility_arrow_right_to_details">An Arrow facing right that will take you to the details page.</string>
+    <string name="accessibility_book_cover_image">This image is the cover for</string>
+</resources>
