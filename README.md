@@ -1,6 +1,6 @@
 # CMP-Bookpedia Project
 
-![Project Status](https://img.shields.io/badge/Kotlin-1.9.22-blue.svg?logo=kotlin)
+![Project Status](https://img.shields.io/badge/Kotlin-2.0.21-blue.svg?logo=kotlin)
 ![Platform](https://img.shields.io/badge/Kotlin%20Multiplatform-%E2%9C%85-purple.svg?logo=kotlin)
 ![Kotlin Version](https://img.shields.io/badge/status-in%20development-yellow.svg)
 
@@ -8,7 +8,7 @@ This project is an implementation of a Kotlin Multiplatform (CMP) application ba
 
 ## About This Project
 
-This repository contains my personal exploration and implementation of the concepts taught by Philipp Lackner. It showcases the use of Kotlin Multiplatform for building applications that share code across different targets (e.g., Android, iOS, Desktop) [2].
+This repository contains my personal exploration and implementation of the concepts taught by Philipp Lackner. It showcases the use of Kotlin Multiplatform for building applications that share code across different targets (e.g., Android, iOS, Desktop)
 
 ## Original Project & Credit
 
